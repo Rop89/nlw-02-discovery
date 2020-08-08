@@ -42,15 +42,14 @@
                     </select>
                 </div>
                 <div class="input-block">
-                    <label for="time">Hora</label>
+                    <label for="time">Horario</label>
                     <input name="time" id="time" type="time" value="{{filters.time}}">
                 </div>
                 <button type="submit">Filtrar</button>
             </form>
         </div>
         </header>
-        <main>
-
+        <main>   
             {% if proffys == "" %}
                 <p class="no-results">Nenhum professor encontrado com a sua pesquisa </p>
             {%else%}
@@ -78,9 +77,7 @@
                     </article>
                 {%endfor%}
             {% endif %}
-         
-
-        </main>
+        </main>        
     </div>
 
 

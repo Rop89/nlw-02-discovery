@@ -6,7 +6,6 @@
 
 #page-success #container{
     position:relative;
-    
     color: var(--color-text-in-primary)
 }
 
@@ -31,6 +30,7 @@
 
 .image-box__background,
 .image-box__overlay {
+    pointer-events:none;
   position: absolute;
   left: 0;
   top: 0;
@@ -41,7 +41,6 @@
 .image-box__background {
     background: url('/images/success-background.svg') center center no-repeat;
     background-size: cover;
-    z-index: 1
   } 
   
 

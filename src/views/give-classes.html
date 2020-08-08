@@ -69,7 +69,7 @@
                     <div class="schedule-item">
                         <div class="select-block">
                             <label for="weekday">Dia da semana</label>
-                            <select name="weekday[]">
+                            <select name="weekday[]" required="required">
                                 <option value="">Selecione uma opção</option>
                                 {%for weekday in weekdays %}
                                 <option value="{{loop.index0}}">{{weekday}}</option>
@@ -94,6 +94,7 @@
                     Preencha todos os dados
                 </p>
                 <button type="submit" form="create-class">Salvar cadastro</button>
+        
             </footer>
         </main>
        

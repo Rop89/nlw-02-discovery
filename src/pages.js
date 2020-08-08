@@ -9,14 +9,14 @@ function pageLanding(req,res){
 }
 
 async function pageStudy(req,res){
-    const filters = req.query
-  
+
+
+    const filters = req.query 
+
 
     if (!filters.subject || !filters.weekday || !filters.time ){
         return res.render("study.html",{filters,subjects,weekdays})
     }
-
-    console.log('Nao tem campos vazios')
 
     const timeToMinutes = convertHourstoMinutes(filters.time)
 
@@ -38,11 +38,9 @@ async function pageStudy(req,res){
          const db = await Database
          const proffys = await db.all(query)
          return res.render('study.html', {proffys, subjects, filters, weekdays })
-
      }catch(error){
          console.log(error)
-     }
-
+     } 
 }
 
 function pageGiveClasses(req,res){
@@ -76,7 +74,7 @@ async function saveClasses(req,res){
         let queryString = "?subject=" + req.body.subject
         queryString += "&weekday=" + req.body.weekday[0]
         queryString += "&time=" + req.body.time_from[0]
-        return res.redirect("/study" + queryString)
+        return res.redirect("/success" + queryString)
     } catch(error){
         console.log(error)
     }   

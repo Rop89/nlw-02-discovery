@@ -29,6 +29,10 @@ function convertHourstoMinutes(time){
    const [hour,minutes]  = time.split(":")
    return  Number((hour * 60) + minutes)
 }
+
+function fieldsRequired(){
+    
+}
 module.exports = {
     subjects,
     weekdays,
