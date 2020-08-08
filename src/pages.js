@@ -59,7 +59,7 @@ async function saveClasses(req,res){
     }
     const classValue = {
         subject: req.body.subject,
-        costs:req.body.cost
+        cost:req.body.cost
     }
     const classScheduleValues = req.body.weekday.map((weekday,index) => {
         return {
@@ -82,10 +82,15 @@ async function saveClasses(req,res){
     }   
 }
 
+function pageSuccess(req,res){
+    return res.render("success.html")
+}
+
 module.exports = {
     pageLanding,
     getSubject,
     pageStudy,
     pageGiveClasses,
-    saveClasses
+    saveClasses,
+    pageSuccess
 }
