@@ -2,7 +2,6 @@ const Database = require ('./database/db')
 
 
 const { subjects,weekdays,getSubject,convertHourstoMinutes } = require('./utils/format')
-const { catch } = require('./database/db')
 
 
 function pageLanding(req,res){
@@ -11,7 +10,7 @@ function pageLanding(req,res){
 
 async function pageStudy(req,res){
     const filters = req.query
-    console.log(filters)
+  
 
     if (!filters.subject || !filters.weekday || !filters.time ){
         return res.render("study.html",{filters,subjects,weekdays})
@@ -38,7 +37,7 @@ async function pageStudy(req,res){
      try{
          const db = await Database
          const proffys = await db.all(query)
-         return res.render('study.html', { proffys, subjects, filters, weekdays })
+         return res.render('study.html', {proffys, subjects, filters, weekdays })
 
      }catch(error){
          console.log(error)
@@ -50,7 +49,7 @@ function pageGiveClasses(req,res){
     return res.render("give-classes.html",{subjects,weekdays})   
 }
 
-function saveClasses(req,res){
+async function saveClasses(req,res){
     const createProffy = require('./database/createProffy')
     const proffyValue={
         name:req.body.name,
@@ -62,30 +61,30 @@ function saveClasses(req,res){
         subject: req.body.subject,
         costs:req.body.cost
     }
-    const classScheduleValues = req.body.weekday.map((weekday,index)=>{
+    const classScheduleValues = req.body.weekday.map((weekday,index) => {
         return {
             
                 weekday,
-                time_from:convertHourstoMinutes(req.body.time_from[index]),
-                time_to:convertHourstoMinutes(req.body.time_to[index])
-    
+                time_from: convertHourstoMinutes(req.body.time_from[index]),
+                time_to: convertHourstoMinutes(req.body.time_to[index])
         }
     })
 
     try {
         const db = await Database
         await createProffy(db, {proffyValue,classValue,classScheduleValues})
+        let queryString = "?subject=" + req.body.subject
+        queryString += "&weekday=" + req.body.weekday[0]
+        queryString += "&time=" + req.body.time_from[0]
+        return res.redirect("/study" + queryString)
     } catch(error){
         console.log(error)
-    }
-    
-
-    return res.redirect("/study")
-    
+    }   
 }
 
 module.exports = {
     pageLanding,
+    getSubject,
     pageStudy,
     pageGiveClasses,
     saveClasses
