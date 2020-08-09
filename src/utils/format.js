@@ -30,9 +30,6 @@ function convertHourstoMinutes(time){
    return  Number((hour * 60) + minutes)
 }
 
-function fieldsRequired(){
-    
-}
 module.exports = {
     subjects,
     weekdays,

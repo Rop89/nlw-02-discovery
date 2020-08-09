@@ -64,13 +64,13 @@
                 </fieldset>
                 <fieldset id="schedule-items">
                     <legend>Horários disponíveis 
-                        <button type="button" id="add-time">+Novo horário</button>
+                        <button type="button" id="add-time" onclick="addButton()">+Novo horário</button>
                     </legend>
                     <div class="schedule-item">
                         <div class="select-block">
                             <label for="weekday">Dia da semana</label>
-                            <select name="weekday[]" required="required">
-                                <option value="">Selecione uma opção</option>
+                            <select name="weekday[]" required="true">
+                                <option id="select" value="select" selected>Selecione uma opção</option>
                                 {%for weekday in weekdays %}
                                 <option value="{{loop.index0}}">{{weekday}}</option>
                                 {%endfor%}
