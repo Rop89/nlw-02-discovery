@@ -15,10 +15,6 @@
 
 <br>
 
-<p align="center">
-  <img alt="Proffy" src=".github/proffy.png" width="100%">
-</p>
-
 ## 🚀 Technologies
 
 This project was developed with the following technologies:
