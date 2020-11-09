@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
- <img alt="Proffy Landing" title="Proffy Landing" src="public/images/landing.png"/>
+ <img alt="Proffy Landing" title="Proffy Landing" src="public/images/landing.svg"/>
 </p>
 
 <br>
